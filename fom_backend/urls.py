@@ -16,7 +16,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from apps.pillow.views_pillow.views_create import create_pillow_view
+from apps.pillow.views_pillow.views_pillow_outlet import get_outlet_pillows_view
 
 urlpatterns = [
+    path('api/pillow/criar/pillow/',create_pillow_view,name='create pillow'),
+    path('api/pillow_outlet/get_outlet/',get_outlet_pillows_view,name='outlet fileds'),
     path('admin/', admin.site.urls),
 ]

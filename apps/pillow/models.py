@@ -10,7 +10,8 @@ class Pillow(models.Model):
         ('travels', 'Travels'),
         ('outlet', 'Outlet'),
     ]
-
+    name= models.CharField(max_length=51,null=False,
+        blank=False,default='Travisseiro de pluma')
     pillow_code = models.CharField(max_length=14, unique=True)
     aquisition_date = models.DateField()
     category = models.CharField(max_length=20, choices=TYPES_CATEGORY)
@@ -26,7 +27,7 @@ class Pillow(models.Model):
 
     def save(self, *args, **kwargs):
         self.full_clean()  
-        self.outlet = (self.category.lower() == 'outlet') 
+        self.outlet = (self.category.lower() == 'Outlet') 
         super().save(*args, **kwargs)
 
     def __str__(self):
